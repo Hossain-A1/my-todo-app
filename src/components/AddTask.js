@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
-const AddTask = () => {
-  const [text, setText] = useState("");
+const AddTask = ({ tasks, setTasks }) => {
+  const [task, setTask] = useState([]);
 
   const inputRef = useRef(null);
 
@@ -11,16 +11,18 @@ const AddTask = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({text}),
+      body: JSON.stringify({ text }),
     });
 
-   
+    const data = await res.json();
+    //  real time data updating
+    setTasks([...tasks, data]);
   };
 
   const addTaskHandler = (e) => {
     e.preventDefault();
-    postData(text);
-    setText("");
+    postData(task);
+    setTask("");
     inputRef.current.blur();
   };
 
@@ -33,8 +35,8 @@ const AddTask = () => {
         <input
           required
           ref={inputRef}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
           type="text"
           className=" bg-violet-700/25 py-3 lg:px-12 px-2 outline-none border-b-2 border-gray-500 focus:border-teal-600 duration-300 rounded"
         />

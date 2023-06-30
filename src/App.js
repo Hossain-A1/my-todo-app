@@ -5,7 +5,7 @@ import TaskList from "./components/TaskList";
 import { useEffect, useState } from "react";
 
 const App = () => {
-  const [tasks, setTasks] = useState();
+  const [tasks, setTasks] = useState([]);
 
   const getData = async () => {
     try {
@@ -28,7 +28,7 @@ const App = () => {
   return (
     <div className=" w-full min-h-screen bg-gradient-to-t from-sky-500 to-indigo-500 flex- flex-col py-10">
       <Navber />
-      <AddTask />
+      <AddTask tasks={tasks} setTasks={setTasks} />
       <TaskList tasks={tasks} />
       <Footer />
     </div>
