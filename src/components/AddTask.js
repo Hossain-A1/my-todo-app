@@ -29,23 +29,26 @@ const AddTask = ({ tasks, setTasks }) => {
   return (
     <form
       onSubmit={addTaskHandler}
-      className="bg-violet-900 container mx-auto p-10 text-gray-300 font-semibold"
+      className="bg-violet-900 container mx-auto p-10 text-gray-300 font-semibold overflow-x-hidden"
     >
-      <div className="flex  lg:justify-between lg:gap-0 gap-2 items-center">
+
+      
+      <div className="flex  lg:justify-between justify-between lg:gap-0 gap-5 items-center">
         <input
           required
           ref={inputRef}
           value={task}
           onChange={(e) => setTask(e.target.value)}
           type="text"
-          className=" bg-violet-700/25 py-3 lg:px-12 px-2 outline-none border-b-2 border-gray-500 focus:border-teal-600 duration-300 rounded"
+          placeholder="What things todo?"
+          className=" bg-violet-700/25 py-3 lg:px-12 px-2 lg:w-[50%] w-[90%] outline-none border-b-2 border-gray-500 focus:border-teal-600 duration-300 rounded"
         />
 
         <button
           type="submit"
-          className=" bg-violet-700/25 py-3 lg:px-6 px-3 text-teal-500 hover:text-teal-600 duration-300 lg:text-xl text-sm font-bold rounded"
+          className=" bg-violet-700/25 py-3 lg:px-6 px-4 text-teal-500 hover:text-teal-600 duration-300 lg:text-xl text-sm lg:font-bold font-medium rounded"
         >
-          Add tasks
+          Add task
         </button>
       </div>
     </form>
